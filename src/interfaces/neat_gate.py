@@ -139,11 +139,10 @@ def compute_gate_bcs_descriptor(
 
     # 特異性: スキルごとの発火確率分布のエントロピー
     skill_prob = np.mean(masks, axis=0)  # (K,) 各スキルの発火確率
-    eps = 1e-8
-    skill_prob = np.clip(skill_prob, eps, 1.0 - eps)
-    entropy = -np.mean(
-        skill_prob * np.log2(skill_prob) + (1.0 - skill_prob) * np.log2(1.0 - skill_prob)
-    )  # スカラー (最大1 bit / スキル)
+    skill_prob = np.clip(skill_prob, 1e-7, 1.0 - 1e-7)
+    h_term = skill_prob * np.log2(skill_prob) + (1.0 - skill_prob) * np.log2(1.0 - skill_prob)
+    h_term = np.where(np.isfinite(h_term), h_term, 0.0)
+    entropy = -float(np.mean(h_term))  # スカラー (最大1 bit / スキル)
     specificity = float(1.0 / (1.0 + entropy))
 
     return np.array([firing_rate, specificity], dtype=np.float32)
