@@ -1,0 +1,56 @@
+============================================================
+TRIDENT NEAT ベンチマーク サマリーレポート
+============================================================
+
+実行日時 : 2026-04-27 01:45:23
+backend  : gpu
+devices  : ['cuda:0']
+
+■ SQRT_POP1000 実行結果
+----------------------------------------
+  [SQRT_POP1000_Spiral]
+    総世代数          : 3631
+    総実行時間        : 600.13s (10.0分)
+    平均世代時間      : 158.70 ms/gen
+    最良 fitness      : -0.613508
+    fitness target    : -0.3
+    収束              : 未達
+
+  [SQRT_POP1000_VectorNeighbor]
+    総世代数          : 56
+    総実行時間        : 3.68s (0.1分)
+    平均世代時間      : 55.58 ms/gen
+    最良 fitness      : -0.009892
+    fitness target    : -0.01
+    収束              : ✅
+
+■ GPU 実行結果
+----------------------------------------
+  GPU 実行: ✅ (上記 CPU と同一パラメータで実行済み — GPU ログは benchmark_gpu_*.jsonl)
+
+■ 比較メモ (CPU vs GPU 理論値)
+----------------------------------------
+  [SQRT_POP1000_Spiral]
+    CPU 平均世代時間       : 158.70 ms/gen
+    GPU 期待値 (100x)     : 1.59 ms/gen
+    GPU 期待値 (最大500x) : 0.32 ms/gen
+    30分で期待できる世代数:
+      CPU 実績            : 3631 世代
+      GPU 期待 (100x)     : 363100 世代
+      GPU 期待 (最大500x) : 1815500 世代
+
+  [SQRT_POP1000_VectorNeighbor]
+    CPU 平均世代時間       : 55.58 ms/gen
+    GPU 期待値 (100x)     : 0.56 ms/gen
+    GPU 期待値 (最大500x) : 0.11 ms/gen
+    30分で期待できる世代数:
+      CPU 実績            : 56 世代
+      GPU 期待 (100x)     : 5600 世代
+      GPU 期待 (最大500x) : 28000 世代
+
+■ ログファイル
+----------------------------------------
+  benchmark_sqrt_pop1000_spiral.jsonl
+  benchmark_sqrt_pop1000_vectorneighbor.jsonl
+
+  サマリー: /mnt/d/Projects/claude_work/neat_trident/logs/benchmark_summary.txt

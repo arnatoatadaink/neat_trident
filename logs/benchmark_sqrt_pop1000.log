@@ -1,0 +1,472 @@
+E0427 01:33:39.563275   26748 cuda_executor.cc:1743] Could not get kernel mode driver version: ( INVALID_ARGUMENT: Version does not match the format X.Y.Z )
+E0427 01:33:39.593145   26707 cuda_executor.cc:1743] Could not get kernel mode driver version: ( INVALID_ARGUMENT: Version does not match the format X.Y.Z )
+============================================================
+TRIDENT NEAT ベンチマーク
+============================================================
+
+デバイス情報:
+  backend  : gpu
+  devices  : ['cuda:0']
+  GPU利用  : ✅ 利用可能
+
+[Problem A] Double Spiral Classification
+  データ: X=(200, 2), y=(200, 1), class balance=100/200
+
+============================================================
+[SQRT_POP1000_Spiral] 開始 (最大 600s / 10分)
+  入力=2, 出力=1, pop=1000, species=32
+  ログ → /mnt/d/Projects/claude_work/neat_trident/logs/benchmark_sqrt_pop1000_spiral.jsonl
+============================================================
+initializing
+initializing finished
+  コンパイル中...
+  コンパイル完了
+  Gen    0 | wall=   0.0s | best=-0.67685 | mean=-0.84617 | gen=482.3ms | species=9 | nodes=3.1
+  Gen   10 | wall=   2.6s | best=-0.67587 | mean=-0.68705 | gen=170.0ms | species=32 | nodes=3.9
+  Gen   20 | wall=   4.3s | best=-0.67546 | mean=-0.68505 | gen=164.8ms | species=31 | nodes=4.2
+  Gen   30 | wall=   6.0s | best=-0.67287 | mean=-0.68417 | gen=163.6ms | species=29 | nodes=4.1
+  Gen   40 | wall=   7.7s | best=-0.66705 | mean=-0.68303 | gen=167.5ms | species=28 | nodes=4.2
+  Gen   50 | wall=   9.5s | best=-0.66254 | mean=-0.68342 | gen=167.5ms | species=27 | nodes=4.0
+  Gen   60 | wall=  11.2s | best=-0.65787 | mean=-0.68642 | gen=157.6ms | species=24 | nodes=4.1
+  Gen   70 | wall=  12.8s | best=-0.65679 | mean=-0.68481 | gen=161.7ms | species=23 | nodes=4.1
+  Gen   80 | wall=  14.5s | best=-0.65588 | mean=-0.68733 | gen=156.1ms | species=21 | nodes=4.2
+  Gen   90 | wall=  16.1s | best=-0.65572 | mean=-0.68876 | gen=159.9ms | species=20 | nodes=4.2
+  Gen  100 | wall=  17.7s | best=-0.65549 | mean=-0.69007 | gen=155.9ms | species=16 | nodes=4.3
+  Gen  110 | wall=  19.4s | best=-0.65538 | mean=-0.68606 | gen=166.8ms | species=31 | nodes=4.0
+  Gen  120 | wall=  21.1s | best=-0.65517 | mean=-0.68994 | gen=165.4ms | species=26 | nodes=4.3
+  Gen  130 | wall=  22.8s | best=-0.65504 | mean=-0.68546 | gen=159.3ms | species=24 | nodes=4.3
+  Gen  140 | wall=  24.5s | best=-0.65495 | mean=-0.69150 | gen=160.6ms | species=20 | nodes=4.7
+  Gen  150 | wall=  26.1s | best=-0.65494 | mean=-0.68732 | gen=156.6ms | species=19 | nodes=4.5
+  Gen  160 | wall=  27.7s | best=-0.65494 | mean=-0.69518 | gen=157.1ms | species=21 | nodes=4.5
+  Gen  170 | wall=  29.4s | best=-0.65493 | mean=-0.69094 | gen=157.7ms | species=20 | nodes=4.5
+  Gen  180 | wall=  31.0s | best=-0.65493 | mean=-0.69120 | gen=160.3ms | species=20 | nodes=4.7
+  Gen  190 | wall=  32.7s | best=-0.65493 | mean=-0.69409 | gen=159.7ms | species=24 | nodes=4.6
+  Gen  200 | wall=  34.9s | best=-0.65475 | mean=-0.68969 | gen=162.0ms | species=27 | nodes=4.5
+  Gen  210 | wall=  36.6s | best=-0.65442 | mean=-0.69384 | gen=160.4ms | species=26 | nodes=4.5
+  Gen  220 | wall=  38.3s | best=-0.65399 | mean=-0.68899 | gen=164.6ms | species=28 | nodes=4.5
+  Gen  230 | wall=  40.0s | best=-0.65377 | mean=-0.68939 | gen=161.7ms | species=26 | nodes=4.5
+  Gen  240 | wall=  41.7s | best=-0.65337 | mean=-0.69146 | gen=156.8ms | species=21 | nodes=4.6
+  Gen  250 | wall=  43.3s | best=-0.65329 | mean=-0.69697 | gen=169.8ms | species=28 | nodes=4.6
+  Gen  260 | wall=  45.1s | best=-0.65313 | mean=-0.69404 | gen=162.1ms | species=32 | nodes=4.9
+  Gen  270 | wall=  46.8s | best=-0.65301 | mean=-0.69312 | gen=165.2ms | species=31 | nodes=4.9
+  Gen  280 | wall=  48.5s | best=-0.65298 | mean=-0.69333 | gen=161.5ms | species=29 | nodes=4.9
+  Gen  290 | wall=  50.2s | best=-0.65296 | mean=-0.69473 | gen=163.4ms | species=25 | nodes=4.7
+  Gen  300 | wall=  51.9s | best=-0.65296 | mean=-0.69438 | gen=166.1ms | species=26 | nodes=4.6
+  Gen  310 | wall=  53.6s | best=-0.65294 | mean=-0.70037 | gen=165.1ms | species=27 | nodes=4.6
+  Gen  320 | wall=  55.4s | best=-0.65287 | mean=-0.69598 | gen=166.6ms | species=27 | nodes=4.8
+  Gen  330 | wall=  57.1s | best=-0.65287 | mean=-0.69935 | gen=164.3ms | species=28 | nodes=4.8
+  Gen  340 | wall=  58.8s | best=-0.65283 | mean=-0.69895 | gen=162.0ms | species=28 | nodes=4.8
+  Gen  350 | wall=  60.5s | best=-0.65282 | mean=-0.70084 | gen=166.8ms | species=27 | nodes=5.0
+  Gen  360 | wall=  62.2s | best=-0.65275 | mean=-0.69653 | gen=169.9ms | species=26 | nodes=4.9
+  Gen  370 | wall=  64.0s | best=-0.65270 | mean=-0.70525 | gen=165.2ms | species=24 | nodes=5.0
+  Gen  380 | wall=  65.7s | best=-0.65267 | mean=-0.70628 | gen=160.1ms | species=23 | nodes=5.0
+  Gen  390 | wall=  67.9s | best=-0.65248 | mean=-0.70398 | gen=157.0ms | species=20 | nodes=5.0
+  Gen  400 | wall=  69.6s | best=-0.65221 | mean=-0.70357 | gen=160.8ms | species=18 | nodes=4.9
+  Gen  410 | wall=  71.2s | best=-0.65214 | mean=-0.70379 | gen=155.0ms | species=15 | nodes=5.0
+  Gen  420 | wall=  72.8s | best=-0.65198 | mean=-0.70594 | gen=157.0ms | species=20 | nodes=4.9
+  Gen  430 | wall=  74.5s | best=-0.65176 | mean=-0.70042 | gen=165.4ms | species=32 | nodes=4.9
+  Gen  440 | wall=  76.2s | best=-0.65173 | mean=-0.69852 | gen=165.9ms | species=32 | nodes=4.8
+  Gen  450 | wall=  78.0s | best=-0.65168 | mean=-0.69718 | gen=167.6ms | species=32 | nodes=4.8
+  Gen  460 | wall=  79.7s | best=-0.65165 | mean=-0.70803 | gen=163.5ms | species=30 | nodes=5.0
+  Gen  470 | wall=  81.4s | best=-0.65162 | mean=-0.70853 | gen=164.7ms | species=29 | nodes=5.0
+  Gen  480 | wall=  83.1s | best=-0.65159 | mean=-0.70488 | gen=163.2ms | species=26 | nodes=5.1
+  Gen  490 | wall=  84.8s | best=-0.65155 | mean=-0.70836 | gen=158.3ms | species=24 | nodes=5.2
+  Gen  500 | wall=  86.5s | best=-0.65153 | mean=-0.70843 | gen=154.6ms | species=21 | nodes=5.4
+  Gen  510 | wall=  88.1s | best=-0.65152 | mean=-0.70318 | gen=157.2ms | species=22 | nodes=5.5
+  Gen  520 | wall=  89.8s | best=-0.65150 | mean=-0.71239 | gen=159.5ms | species=24 | nodes=5.3
+  Gen  530 | wall=  91.4s | best=-0.65150 | mean=-0.70127 | gen=161.2ms | species=24 | nodes=5.3
+  Gen  540 | wall=  93.1s | best=-0.65147 | mean=-0.70210 | gen=161.7ms | species=26 | nodes=5.3
+  Gen  550 | wall=  94.9s | best=-0.65147 | mean=-0.70761 | gen=167.9ms | species=27 | nodes=5.3
+  Gen  560 | wall=  96.6s | best=-0.65117 | mean=-0.70412 | gen=163.4ms | species=30 | nodes=5.3
+  Gen  570 | wall=  98.3s | best=-0.65031 | mean=-0.70139 | gen=170.3ms | species=31 | nodes=5.5
+  Gen  580 | wall= 100.6s | best=-0.64894 | mean=-0.70157 | gen=165.7ms | species=29 | nodes=5.6
+  Gen  590 | wall= 102.3s | best=-0.64771 | mean=-0.70367 | gen=164.4ms | species=29 | nodes=5.5
+  Gen  600 | wall= 104.0s | best=-0.64610 | mean=-0.70647 | gen=164.7ms | species=29 | nodes=5.5
+  Gen  610 | wall= 105.8s | best=-0.64543 | mean=-0.70915 | gen=167.1ms | species=29 | nodes=5.6
+  Gen  620 | wall= 107.5s | best=-0.64492 | mean=-0.70693 | gen=168.8ms | species=29 | nodes=5.7
+  Gen  630 | wall= 109.2s | best=-0.64407 | mean=-0.70370 | gen=171.2ms | species=31 | nodes=5.7
+  Gen  640 | wall= 110.9s | best=-0.64364 | mean=-0.70101 | gen=167.3ms | species=31 | nodes=5.6
+  Gen  650 | wall= 112.6s | best=-0.64320 | mean=-0.70409 | gen=166.6ms | species=30 | nodes=5.6
+  Gen  660 | wall= 114.3s | best=-0.64305 | mean=-0.70203 | gen=161.7ms | species=27 | nodes=5.8
+  Gen  670 | wall= 116.0s | best=-0.64269 | mean=-0.70581 | gen=160.4ms | species=28 | nodes=5.7
+  Gen  680 | wall= 117.7s | best=-0.64267 | mean=-0.70991 | gen=164.5ms | species=28 | nodes=5.8
+  Gen  690 | wall= 119.5s | best=-0.64242 | mean=-0.70085 | gen=166.3ms | species=30 | nodes=5.8
+  Gen  700 | wall= 121.2s | best=-0.64239 | mean=-0.71121 | gen=166.5ms | species=29 | nodes=5.8
+  Gen  710 | wall= 122.9s | best=-0.64233 | mean=-0.71219 | gen=167.1ms | species=29 | nodes=5.8
+  Gen  720 | wall= 124.6s | best=-0.64233 | mean=-0.71557 | gen=161.6ms | species=28 | nodes=5.8
+  Gen  730 | wall= 126.4s | best=-0.64233 | mean=-0.70542 | gen=167.9ms | species=26 | nodes=6.2
+  Gen  740 | wall= 128.1s | best=-0.64220 | mean=-0.71484 | gen=164.3ms | species=26 | nodes=5.7
+  Gen  750 | wall= 129.8s | best=-0.64216 | mean=-0.70612 | gen=165.1ms | species=28 | nodes=6.0
+  Gen  760 | wall= 131.5s | best=-0.64216 | mean=-0.70993 | gen=164.7ms | species=28 | nodes=6.0
+  Gen  770 | wall= 133.9s | best=-0.64216 | mean=-0.72294 | gen=170.1ms | species=25 | nodes=6.3
+  Gen  780 | wall= 135.6s | best=-0.64216 | mean=-0.70843 | gen=165.0ms | species=25 | nodes=6.4
+  Gen  790 | wall= 137.3s | best=-0.64216 | mean=-0.71095 | gen=162.3ms | species=24 | nodes=6.6
+  Gen  800 | wall= 139.0s | best=-0.64216 | mean=-0.71287 | gen=165.5ms | species=24 | nodes=6.6
+  Gen  810 | wall= 140.7s | best=-0.64216 | mean=-0.70580 | gen=159.3ms | species=24 | nodes=6.8
+  Gen  820 | wall= 142.4s | best=-0.64215 | mean=-0.71388 | gen=165.6ms | species=26 | nodes=6.7
+  Gen  830 | wall= 144.1s | best=-0.64215 | mean=-0.71378 | gen=163.0ms | species=29 | nodes=6.7
+  Gen  840 | wall= 145.8s | best=-0.64215 | mean=-0.71734 | gen=171.2ms | species=29 | nodes=6.8
+  Gen  850 | wall= 147.6s | best=-0.64205 | mean=-0.73580 | gen=170.6ms | species=27 | nodes=6.8
+  Gen  860 | wall= 149.3s | best=-0.64186 | mean=-0.72398 | gen=161.3ms | species=24 | nodes=7.0
+  Gen  870 | wall= 150.9s | best=-0.64181 | mean=-0.72726 | gen=155.4ms | species=24 | nodes=7.1
+  Gen  880 | wall= 152.5s | best=-0.64173 | mean=-0.72082 | gen=155.7ms | species=23 | nodes=6.8
+  Gen  890 | wall= 154.2s | best=-0.64169 | mean=-0.74571 | gen=154.8ms | species=25 | nodes=6.9
+  Gen  900 | wall= 155.8s | best=-0.64141 | mean=-0.73629 | gen=165.9ms | species=26 | nodes=6.4
+  Gen  910 | wall= 157.5s | best=-0.64108 | mean=-0.73237 | gen=166.1ms | species=26 | nodes=6.3
+  Gen  920 | wall= 159.2s | best=-0.64106 | mean=-0.74048 | gen=160.5ms | species=24 | nodes=6.4
+  Gen  930 | wall= 160.9s | best=-0.64094 | mean=-0.73945 | gen=161.7ms | species=25 | nodes=6.4
+  Gen  940 | wall= 162.6s | best=-0.64093 | mean=-0.73566 | gen=162.4ms | species=21 | nodes=6.6
+  Gen  950 | wall= 164.3s | best=-0.64087 | mean=-0.73906 | gen=158.3ms | species=20 | nodes=6.8
+  Gen  960 | wall= 166.5s | best=-0.64087 | mean=-0.72034 | gen=158.5ms | species=21 | nodes=6.9
+  Gen  970 | wall= 168.2s | best=-0.64087 | mean=-0.74702 | gen=162.5ms | species=22 | nodes=6.9
+  Gen  980 | wall= 169.9s | best=-0.64087 | mean=-0.75549 | gen=160.4ms | species=23 | nodes=6.8
+  Gen  990 | wall= 171.6s | best=-0.64086 | mean=-0.73537 | gen=166.6ms | species=25 | nodes=6.7
+  Gen 1000 | wall= 173.3s | best=-0.64077 | mean=-0.72936 | gen=166.3ms | species=25 | nodes=6.7
+  Gen 1010 | wall= 175.0s | best=-0.64076 | mean=-0.75053 | gen=160.3ms | species=24 | nodes=7.0
+  Gen 1020 | wall= 176.6s | best=-0.64071 | mean=-0.71041 | gen=158.2ms | species=22 | nodes=6.4
+  Gen 1030 | wall= 178.2s | best=-0.64067 | mean=-0.71448 | gen=160.4ms | species=23 | nodes=6.6
+  Gen 1040 | wall= 179.9s | best=-0.64054 | mean=-0.70859 | gen=166.2ms | species=24 | nodes=6.6
+  Gen 1050 | wall= 181.6s | best=-0.64049 | mean=-0.71899 | gen=157.4ms | species=24 | nodes=6.7
+  Gen 1060 | wall= 183.3s | best=-0.64049 | mean=-0.70898 | gen=161.9ms | species=24 | nodes=6.7
+  Gen 1070 | wall= 185.0s | best=-0.64049 | mean=-0.71670 | gen=162.1ms | species=23 | nodes=6.8
+  Gen 1080 | wall= 186.7s | best=-0.64045 | mean=-0.72528 | gen=165.1ms | species=22 | nodes=6.8
+  Gen 1090 | wall= 188.4s | best=-0.64040 | mean=-0.72137 | gen=159.8ms | species=21 | nodes=6.9
+  Gen 1100 | wall= 190.1s | best=-0.64037 | mean=-0.72249 | gen=162.1ms | species=20 | nodes=7.0
+  Gen 1110 | wall= 191.8s | best=-0.64036 | mean=-0.74417 | gen=159.5ms | species=21 | nodes=7.1
+  Gen 1120 | wall= 193.5s | best=-0.64033 | mean=-0.71785 | gen=158.7ms | species=21 | nodes=6.0
+  Gen 1130 | wall= 195.2s | best=-0.64033 | mean=-0.72706 | gen=160.2ms | species=20 | nodes=6.1
+  Gen 1140 | wall= 196.8s | best=-0.64030 | mean=-0.71480 | gen=158.3ms | species=20 | nodes=6.0
+  Gen 1150 | wall= 199.1s | best=-0.64023 | mean=-0.71519 | gen=162.5ms | species=19 | nodes=6.0
+  Gen 1160 | wall= 200.9s | best=-0.64023 | mean=-0.72077 | gen=162.1ms | species=20 | nodes=5.9
+  Gen 1170 | wall= 202.5s | best=-0.64020 | mean=-0.72211 | gen=160.4ms | species=21 | nodes=5.9
+  Gen 1180 | wall= 204.2s | best=-0.64020 | mean=-0.72341 | gen=166.7ms | species=28 | nodes=5.7
+  Gen 1190 | wall= 206.0s | best=-0.64020 | mean=-0.72410 | gen=164.3ms | species=26 | nodes=5.8
+  Gen 1200 | wall= 207.7s | best=-0.64020 | mean=-0.71360 | gen=162.9ms | species=25 | nodes=5.9
+  Gen 1210 | wall= 209.3s | best=-0.64020 | mean=-0.72484 | gen=163.0ms | species=25 | nodes=5.8
+  Gen 1220 | wall= 211.1s | best=-0.64020 | mean=-0.71359 | gen=165.3ms | species=26 | nodes=5.7
+  Gen 1230 | wall= 212.8s | best=-0.64020 | mean=-0.73723 | gen=161.9ms | species=27 | nodes=5.8
+  Gen 1240 | wall= 214.5s | best=-0.64015 | mean=-0.71209 | gen=168.8ms | species=32 | nodes=5.7
+  Gen 1250 | wall= 216.2s | best=-0.64015 | mean=-0.71853 | gen=161.8ms | species=32 | nodes=5.7
+  Gen 1260 | wall= 217.9s | best=-0.64006 | mean=-0.72006 | gen=164.7ms | species=29 | nodes=5.7
+  Gen 1270 | wall= 219.5s | best=-0.63999 | mean=-0.71595 | gen=159.4ms | species=30 | nodes=5.8
+  Gen 1280 | wall= 221.3s | best=-0.63997 | mean=-0.72659 | gen=164.7ms | species=28 | nodes=5.7
+  Gen 1290 | wall= 223.0s | best=-0.63991 | mean=-0.72235 | gen=166.8ms | species=30 | nodes=5.8
+  Gen 1300 | wall= 224.7s | best=-0.63991 | mean=-0.71895 | gen=164.8ms | species=30 | nodes=5.9
+  Gen 1310 | wall= 226.4s | best=-0.63991 | mean=-0.72430 | gen=164.4ms | species=28 | nodes=6.1
+  Gen 1320 | wall= 228.1s | best=-0.63985 | mean=-0.73497 | gen=162.9ms | species=26 | nodes=6.2
+  Gen 1330 | wall= 229.9s | best=-0.63984 | mean=-0.71459 | gen=170.0ms | species=32 | nodes=5.9
+  Gen 1340 | wall= 232.2s | best=-0.63984 | mean=-0.71704 | gen=167.7ms | species=30 | nodes=6.0
+  Gen 1350 | wall= 234.0s | best=-0.63978 | mean=-0.72570 | gen=167.1ms | species=30 | nodes=6.1
+  Gen 1360 | wall= 235.8s | best=-0.63978 | mean=-0.72987 | gen=166.6ms | species=29 | nodes=6.2
+  Gen 1370 | wall= 237.5s | best=-0.63977 | mean=-0.72943 | gen=166.6ms | species=27 | nodes=6.2
+  Gen 1380 | wall= 239.2s | best=-0.63973 | mean=-0.73116 | gen=162.6ms | species=25 | nodes=6.3
+  Gen 1390 | wall= 240.9s | best=-0.63972 | mean=-0.72635 | gen=162.8ms | species=27 | nodes=6.3
+  Gen 1400 | wall= 242.6s | best=-0.63972 | mean=-0.72574 | gen=168.5ms | species=32 | nodes=6.2
+  Gen 1410 | wall= 244.2s | best=-0.63970 | mean=-0.73130 | gen=158.2ms | species=31 | nodes=6.2
+  Gen 1420 | wall= 245.9s | best=-0.63970 | mean=-0.71895 | gen=162.2ms | species=29 | nodes=6.0
+  Gen 1430 | wall= 247.6s | best=-0.63966 | mean=-0.72039 | gen=162.5ms | species=26 | nodes=6.0
+  Gen 1440 | wall= 249.3s | best=-0.63966 | mean=-0.71364 | gen=164.1ms | species=27 | nodes=6.1
+  Gen 1450 | wall= 251.1s | best=-0.63966 | mean=-0.73247 | gen=169.4ms | species=31 | nodes=6.0
+  Gen 1460 | wall= 252.8s | best=-0.63965 | mean=-0.72176 | gen=165.4ms | species=31 | nodes=5.8
+  Gen 1470 | wall= 254.5s | best=-0.63789 | mean=-0.73301 | gen=161.0ms | species=26 | nodes=6.0
+  Gen 1480 | wall= 256.2s | best=-0.63475 | mean=-0.72513 | gen=161.0ms | species=25 | nodes=6.2
+  Gen 1490 | wall= 257.9s | best=-0.63083 | mean=-0.73674 | gen=162.6ms | species=27 | nodes=6.2
+  Gen 1500 | wall= 259.6s | best=-0.62720 | mean=-0.73203 | gen=166.7ms | species=32 | nodes=6.1
+  Gen 1510 | wall= 261.3s | best=-0.62624 | mean=-0.71842 | gen=169.1ms | species=31 | nodes=6.0
+  Gen 1520 | wall= 263.1s | best=-0.62500 | mean=-0.72199 | gen=165.9ms | species=30 | nodes=6.0
+  Gen 1530 | wall= 265.5s | best=-0.62394 | mean=-0.72593 | gen=174.0ms | species=31 | nodes=6.0
+  Gen 1540 | wall= 267.2s | best=-0.62363 | mean=-0.72407 | gen=176.3ms | species=32 | nodes=6.0
+  Gen 1550 | wall= 269.0s | best=-0.62351 | mean=-0.73194 | gen=167.5ms | species=30 | nodes=6.1
+  Gen 1560 | wall= 270.8s | best=-0.62339 | mean=-0.71981 | gen=168.4ms | species=28 | nodes=6.4
+  Gen 1570 | wall= 272.5s | best=-0.62216 | mean=-0.74587 | gen=161.3ms | species=28 | nodes=6.4
+  Gen 1580 | wall= 274.2s | best=-0.62136 | mean=-0.73169 | gen=167.1ms | species=32 | nodes=6.3
+  Gen 1590 | wall= 275.9s | best=-0.62108 | mean=-0.72819 | gen=168.3ms | species=31 | nodes=6.4
+  Gen 1600 | wall= 277.6s | best=-0.62056 | mean=-0.72697 | gen=165.1ms | species=28 | nodes=6.4
+  Gen 1610 | wall= 279.3s | best=-0.62038 | mean=-0.74868 | gen=161.1ms | species=26 | nodes=6.7
+  Gen 1620 | wall= 281.0s | best=-0.62038 | mean=-0.71705 | gen=161.7ms | species=28 | nodes=6.7
+  Gen 1630 | wall= 282.7s | best=-0.62024 | mean=-0.73704 | gen=165.7ms | species=27 | nodes=6.8
+  Gen 1640 | wall= 284.4s | best=-0.62024 | mean=-0.72102 | gen=160.8ms | species=28 | nodes=6.8
+  Gen 1650 | wall= 286.1s | best=-0.61988 | mean=-0.72904 | gen=172.4ms | species=32 | nodes=6.5
+  Gen 1660 | wall= 287.9s | best=-0.61988 | mean=-0.72867 | gen=174.3ms | species=32 | nodes=6.5
+  Gen 1670 | wall= 289.7s | best=-0.61988 | mean=-0.73783 | gen=173.1ms | species=29 | nodes=6.5
+  Gen 1680 | wall= 291.5s | best=-0.61980 | mean=-0.73679 | gen=167.2ms | species=32 | nodes=6.0
+  Gen 1690 | wall= 293.2s | best=-0.61978 | mean=-0.72536 | gen=164.6ms | species=31 | nodes=6.0
+  Gen 1700 | wall= 295.0s | best=-0.61978 | mean=-0.72468 | gen=174.7ms | species=30 | nodes=6.2
+  Gen 1710 | wall= 296.7s | best=-0.61978 | mean=-0.73654 | gen=173.2ms | species=31 | nodes=6.2
+  Gen 1720 | wall= 299.1s | best=-0.61554 | mean=-0.72106 | gen=170.6ms | species=32 | nodes=6.1
+  Gen 1730 | wall= 300.9s | best=-0.61432 | mean=-0.71542 | gen=167.3ms | species=29 | nodes=6.3
+  Gen 1740 | wall= 302.7s | best=-0.61407 | mean=-0.73875 | gen=169.1ms | species=26 | nodes=6.4
+  Gen 1750 | wall= 304.4s | best=-0.61395 | mean=-0.73540 | gen=162.9ms | species=27 | nodes=6.4
+  Gen 1760 | wall= 306.1s | best=-0.61395 | mean=-0.73604 | gen=163.8ms | species=27 | nodes=6.4
+  Gen 1770 | wall= 307.8s | best=-0.61395 | mean=-0.73051 | gen=156.1ms | species=20 | nodes=6.9
+  Gen 1780 | wall= 309.4s | best=-0.61395 | mean=-0.73801 | gen=161.2ms | species=20 | nodes=7.0
+  Gen 1790 | wall= 311.1s | best=-0.61395 | mean=-0.75132 | gen=160.5ms | species=20 | nodes=7.0
+  Gen 1800 | wall= 312.8s | best=-0.61392 | mean=-0.75489 | gen=157.5ms | species=19 | nodes=6.9
+  Gen 1810 | wall= 314.4s | best=-0.61392 | mean=-0.74210 | gen=149.6ms | species=17 | nodes=7.3
+  Gen 1820 | wall= 315.9s | best=-0.61386 | mean=-0.74442 | gen=152.3ms | species=17 | nodes=7.3
+  Gen 1830 | wall= 317.5s | best=-0.61386 | mean=-0.76043 | gen=151.6ms | species=17 | nodes=7.3
+  Gen 1840 | wall= 319.2s | best=-0.61386 | mean=-0.77150 | gen=159.1ms | species=15 | nodes=7.7
+  Gen 1850 | wall= 320.8s | best=-0.61361 | mean=-0.74710 | gen=154.3ms | species=15 | nodes=7.9
+  Gen 1860 | wall= 322.4s | best=-0.61361 | mean=-0.73717 | gen=159.0ms | species=15 | nodes=8.0
+  Gen 1870 | wall= 324.0s | best=-0.61361 | mean=-0.76140 | gen=153.1ms | species=13 | nodes=8.4
+  Gen 1880 | wall= 325.6s | best=-0.61361 | mean=-0.75641 | gen=154.2ms | species=12 | nodes=8.7
+  Gen 1890 | wall= 327.2s | best=-0.61361 | mean=-0.77738 | gen=155.5ms | species=11 | nodes=8.9
+  Gen 1900 | wall= 328.9s | best=-0.61361 | mean=-0.75101 | gen=153.9ms | species=11 | nodes=8.9
+  Gen 1910 | wall= 331.1s | best=-0.61361 | mean=-0.76419 | gen=161.9ms | species=11 | nodes=8.9
+  Gen 1920 | wall= 332.8s | best=-0.61361 | mean=-0.75698 | gen=160.4ms | species=11 | nodes=8.8
+  Gen 1930 | wall= 334.4s | best=-0.61356 | mean=-0.75927 | gen=158.1ms | species=9 | nodes=9.4
+  Gen 1940 | wall= 336.0s | best=-0.61356 | mean=-0.74695 | gen=156.5ms | species=9 | nodes=9.4
+  Gen 1950 | wall= 337.6s | best=-0.61356 | mean=-0.79169 | gen=151.8ms | species=9 | nodes=9.4
+  Gen 1960 | wall= 339.2s | best=-0.61356 | mean=-0.78124 | gen=151.8ms | species=9 | nodes=9.4
+  Gen 1970 | wall= 340.7s | best=-0.61356 | mean=-0.78037 | gen=150.1ms | species=9 | nodes=9.5
+  Gen 1980 | wall= 342.3s | best=-0.61351 | mean=-0.78786 | gen=149.3ms | species=9 | nodes=9.4
+  Gen 1990 | wall= 343.9s | best=-0.61351 | mean=-0.76067 | gen=149.7ms | species=9 | nodes=9.4
+  Gen 2000 | wall= 345.5s | best=-0.61351 | mean=-0.77036 | gen=152.1ms | species=9 | nodes=9.4
+  Gen 2010 | wall= 347.0s | best=-0.61351 | mean=-0.81956 | gen=146.7ms | species=7 | nodes=8.4
+  Gen 2020 | wall= 348.5s | best=-0.61351 | mean=-0.77429 | gen=144.8ms | species=7 | nodes=8.4
+  Gen 2030 | wall= 350.1s | best=-0.61351 | mean=-0.81596 | gen=146.1ms | species=7 | nodes=8.3
+  Gen 2040 | wall= 351.6s | best=-0.61351 | mean=-0.82329 | gen=149.2ms | species=7 | nodes=8.4
+  Gen 2050 | wall= 353.2s | best=-0.61351 | mean=-0.80917 | gen=150.3ms | species=7 | nodes=8.3
+  Gen 2060 | wall= 354.8s | best=-0.61351 | mean=-0.80752 | gen=149.8ms | species=7 | nodes=8.3
+  Gen 2070 | wall= 356.3s | best=-0.61351 | mean=-0.78268 | gen=149.2ms | species=6 | nodes=8.1
+  Gen 2080 | wall= 357.9s | best=-0.61351 | mean=-0.79345 | gen=146.2ms | species=5 | nodes=8.2
+  Gen 2090 | wall= 359.4s | best=-0.61351 | mean=-0.80278 | gen=147.2ms | species=5 | nodes=8.3
+  Gen 2100 | wall= 361.0s | best=-0.61351 | mean=-0.81663 | gen=146.4ms | species=5 | nodes=8.1
+  Gen 2110 | wall= 362.5s | best=-0.61351 | mean=-0.80855 | gen=154.0ms | species=5 | nodes=8.3
+  Gen 2120 | wall= 364.7s | best=-0.61351 | mean=-0.78078 | gen=152.6ms | species=5 | nodes=8.2
+  Gen 2130 | wall= 366.3s | best=-0.61351 | mean=-0.78868 | gen=148.0ms | species=5 | nodes=8.2
+  Gen 2140 | wall= 367.9s | best=-0.61351 | mean=-0.80903 | gen=149.4ms | species=5 | nodes=8.2
+  Gen 2150 | wall= 369.4s | best=-0.61351 | mean=-0.78691 | gen=145.9ms | species=4 | nodes=8.7
+  Gen 2160 | wall= 370.9s | best=-0.61351 | mean=-0.79742 | gen=146.2ms | species=4 | nodes=8.7
+  Gen 2170 | wall= 372.4s | best=-0.61351 | mean=-0.80437 | gen=145.8ms | species=4 | nodes=8.9
+  Gen 2180 | wall= 374.0s | best=-0.61351 | mean=-0.81378 | gen=148.4ms | species=4 | nodes=8.9
+  Gen 2190 | wall= 375.5s | best=-0.61351 | mean=-0.80604 | gen=153.3ms | species=4 | nodes=8.8
+  Gen 2200 | wall= 377.0s | best=-0.61351 | mean=-0.81207 | gen=146.5ms | species=4 | nodes=9.0
+  Gen 2210 | wall= 378.6s | best=-0.61351 | mean=-0.80527 | gen=148.1ms | species=4 | nodes=8.9
+  Gen 2220 | wall= 380.1s | best=-0.61351 | mean=-0.80642 | gen=144.9ms | species=4 | nodes=8.9
+  Gen 2230 | wall= 381.6s | best=-0.61351 | mean=-0.81374 | gen=143.1ms | species=3 | nodes=8.7
+  Gen 2240 | wall= 383.1s | best=-0.61351 | mean=-0.83247 | gen=143.3ms | species=3 | nodes=8.8
+  Gen 2250 | wall= 384.6s | best=-0.61351 | mean=-0.81543 | gen=145.6ms | species=3 | nodes=8.9
+  Gen 2260 | wall= 386.2s | best=-0.61351 | mean=-0.82104 | gen=150.1ms | species=3 | nodes=8.9
+  Gen 2270 | wall= 387.7s | best=-0.61351 | mean=-0.81055 | gen=147.8ms | species=3 | nodes=8.9
+  Gen 2280 | wall= 389.3s | best=-0.61351 | mean=-0.82778 | gen=144.9ms | species=3 | nodes=8.8
+  Gen 2290 | wall= 390.8s | best=-0.61351 | mean=-0.81800 | gen=145.1ms | species=3 | nodes=8.9
+  Gen 2300 | wall= 392.3s | best=-0.61351 | mean=-0.83766 | gen=150.3ms | species=3 | nodes=8.9
+  Gen 2310 | wall= 393.9s | best=-0.61351 | mean=-0.81532 | gen=146.7ms | species=3 | nodes=8.9
+  Gen 2320 | wall= 395.4s | best=-0.61351 | mean=-0.81017 | gen=154.6ms | species=3 | nodes=8.9
+  Gen 2330 | wall= 397.6s | best=-0.61351 | mean=-0.81597 | gen=147.5ms | species=3 | nodes=8.9
+  Gen 2340 | wall= 399.2s | best=-0.61351 | mean=-0.82112 | gen=147.9ms | species=3 | nodes=8.9
+  Gen 2350 | wall= 400.7s | best=-0.61351 | mean=-0.81980 | gen=146.4ms | species=3 | nodes=9.0
+  Gen 2360 | wall= 402.3s | best=-0.61351 | mean=-0.84667 | gen=145.8ms | species=3 | nodes=8.8
+  Gen 2370 | wall= 403.8s | best=-0.61351 | mean=-0.83285 | gen=145.1ms | species=3 | nodes=9.0
+  Gen 2380 | wall= 405.3s | best=-0.61351 | mean=-0.83963 | gen=147.3ms | species=3 | nodes=9.0
+  Gen 2390 | wall= 406.9s | best=-0.61351 | mean=-0.82643 | gen=143.1ms | species=3 | nodes=8.9
+  Gen 2400 | wall= 408.4s | best=-0.61351 | mean=-0.83496 | gen=145.5ms | species=3 | nodes=8.8
+  Gen 2410 | wall= 409.9s | best=-0.61351 | mean=-0.77760 | gen=146.6ms | species=3 | nodes=8.9
+  Gen 2420 | wall= 411.4s | best=-0.61351 | mean=-0.83906 | gen=142.7ms | species=3 | nodes=8.7
+  Gen 2430 | wall= 412.9s | best=-0.61351 | mean=-0.80718 | gen=147.6ms | species=3 | nodes=8.8
+  Gen 2440 | wall= 414.5s | best=-0.61351 | mean=-0.84145 | gen=143.8ms | species=3 | nodes=8.9
+  Gen 2450 | wall= 416.0s | best=-0.61351 | mean=-0.82234 | gen=143.8ms | species=3 | nodes=8.8
+  Gen 2460 | wall= 417.5s | best=-0.61351 | mean=-0.81028 | gen=146.4ms | species=3 | nodes=8.9
+  Gen 2470 | wall= 419.0s | best=-0.61351 | mean=-0.81410 | gen=148.0ms | species=3 | nodes=8.9
+  Gen 2480 | wall= 420.6s | best=-0.61351 | mean=-0.79812 | gen=145.7ms | species=3 | nodes=8.8
+  Gen 2490 | wall= 422.1s | best=-0.61351 | mean=-0.82012 | gen=144.4ms | species=3 | nodes=9.0
+  Gen 2500 | wall= 423.7s | best=-0.61351 | mean=-0.84358 | gen=151.5ms | species=3 | nodes=8.9
+  Gen 2510 | wall= 425.2s | best=-0.61351 | mean=-0.84911 | gen=145.5ms | species=3 | nodes=8.8
+  Gen 2520 | wall= 426.7s | best=-0.61351 | mean=-0.80466 | gen=146.9ms | species=3 | nodes=8.9
+  Gen 2530 | wall= 428.3s | best=-0.61351 | mean=-0.82174 | gen=147.5ms | species=2 | nodes=9.0
+  Gen 2540 | wall= 430.5s | best=-0.61351 | mean=-0.84790 | gen=146.0ms | species=2 | nodes=9.1
+  Gen 2550 | wall= 432.0s | best=-0.61351 | mean=-0.81887 | gen=150.3ms | species=2 | nodes=9.0
+  Gen 2560 | wall= 433.6s | best=-0.61351 | mean=-0.82978 | gen=146.5ms | species=2 | nodes=9.1
+  Gen 2570 | wall= 435.1s | best=-0.61351 | mean=-0.83538 | gen=144.8ms | species=2 | nodes=9.2
+  Gen 2580 | wall= 436.7s | best=-0.61351 | mean=-0.87608 | gen=143.9ms | species=2 | nodes=9.0
+  Gen 2590 | wall= 438.1s | best=-0.61351 | mean=-0.87175 | gen=141.3ms | species=2 | nodes=9.0
+  Gen 2600 | wall= 439.6s | best=-0.61351 | mean=-0.83857 | gen=147.0ms | species=2 | nodes=9.1
+  Gen 2610 | wall= 441.2s | best=-0.61351 | mean=-0.83833 | gen=146.6ms | species=2 | nodes=9.1
+  Gen 2620 | wall= 442.7s | best=-0.61351 | mean=-0.84793 | gen=144.6ms | species=2 | nodes=9.1
+  Gen 2630 | wall= 444.2s | best=-0.61351 | mean=-0.86445 | gen=143.6ms | species=2 | nodes=9.1
+  Gen 2640 | wall= 445.7s | best=-0.61351 | mean=-0.87962 | gen=146.1ms | species=2 | nodes=9.1
+  Gen 2650 | wall= 447.2s | best=-0.61351 | mean=-0.82774 | gen=145.5ms | species=2 | nodes=9.2
+  Gen 2660 | wall= 448.7s | best=-0.61351 | mean=-0.82335 | gen=145.5ms | species=2 | nodes=9.1
+  Gen 2670 | wall= 450.3s | best=-0.61351 | mean=-0.82381 | gen=146.5ms | species=2 | nodes=9.1
+  Gen 2680 | wall= 451.8s | best=-0.61351 | mean=-0.85815 | gen=143.7ms | species=2 | nodes=9.1
+  Gen 2690 | wall= 453.3s | best=-0.61351 | mean=-0.84493 | gen=144.8ms | species=2 | nodes=9.1
+  Gen 2700 | wall= 454.8s | best=-0.61351 | mean=-0.86337 | gen=147.8ms | species=2 | nodes=9.0
+  Gen 2710 | wall= 456.3s | best=-0.61351 | mean=-0.82260 | gen=145.0ms | species=2 | nodes=9.1
+  Gen 2720 | wall= 457.9s | best=-0.61351 | mean=-0.85761 | gen=148.6ms | species=2 | nodes=9.0
+  Gen 2730 | wall= 459.4s | best=-0.61351 | mean=-0.84121 | gen=145.4ms | species=2 | nodes=9.1
+  Gen 2740 | wall= 461.0s | best=-0.61351 | mean=-0.86003 | gen=145.4ms | species=2 | nodes=9.1
+  Gen 2750 | wall= 463.1s | best=-0.61351 | mean=-0.85580 | gen=146.1ms | species=2 | nodes=9.0
+  Gen 2760 | wall= 464.6s | best=-0.61351 | mean=-0.85314 | gen=148.9ms | species=2 | nodes=9.1
+  Gen 2770 | wall= 466.2s | best=-0.61351 | mean=-0.84536 | gen=152.1ms | species=2 | nodes=9.1
+  Gen 2780 | wall= 467.7s | best=-0.61351 | mean=-0.85969 | gen=146.2ms | species=2 | nodes=9.1
+  Gen 2790 | wall= 469.3s | best=-0.61351 | mean=-0.86109 | gen=145.1ms | species=2 | nodes=9.0
+  Gen 2800 | wall= 470.8s | best=-0.61351 | mean=-0.84629 | gen=144.7ms | species=2 | nodes=9.1
+  Gen 2810 | wall= 472.3s | best=-0.61351 | mean=-0.84356 | gen=144.1ms | species=2 | nodes=9.3
+  Gen 2820 | wall= 473.8s | best=-0.61351 | mean=-0.83676 | gen=148.4ms | species=2 | nodes=9.0
+  Gen 2830 | wall= 475.4s | best=-0.61351 | mean=-0.86386 | gen=148.1ms | species=2 | nodes=8.9
+  Gen 2840 | wall= 476.9s | best=-0.61351 | mean=-0.84390 | gen=143.4ms | species=2 | nodes=9.0
+  Gen 2850 | wall= 478.4s | best=-0.61351 | mean=-0.83465 | gen=146.1ms | species=2 | nodes=8.9
+  Gen 2860 | wall= 479.9s | best=-0.61351 | mean=-0.83975 | gen=143.2ms | species=2 | nodes=9.1
+  Gen 2870 | wall= 481.5s | best=-0.61351 | mean=-0.81482 | gen=149.8ms | species=2 | nodes=8.9
+  Gen 2880 | wall= 483.0s | best=-0.61351 | mean=-0.83982 | gen=143.6ms | species=2 | nodes=8.9
+  Gen 2890 | wall= 484.5s | best=-0.61351 | mean=-0.83479 | gen=144.7ms | species=2 | nodes=9.0
+  Gen 2900 | wall= 486.0s | best=-0.61351 | mean=-0.87787 | gen=144.3ms | species=2 | nodes=8.9
+  Gen 2910 | wall= 487.6s | best=-0.61351 | mean=-0.84570 | gen=145.6ms | species=2 | nodes=9.0
+  Gen 2920 | wall= 489.1s | best=-0.61351 | mean=-0.84252 | gen=149.1ms | species=2 | nodes=9.0
+  Gen 2930 | wall= 490.6s | best=-0.61351 | mean=-0.86377 | gen=144.5ms | species=2 | nodes=9.2
+  Gen 2940 | wall= 492.1s | best=-0.61351 | mean=-0.84844 | gen=147.4ms | species=2 | nodes=9.0
+  Gen 2950 | wall= 493.7s | best=-0.61351 | mean=-0.85487 | gen=145.3ms | species=2 | nodes=9.0
+  Gen 2960 | wall= 495.7s | best=-0.61351 | mean=-0.84264 | gen=145.4ms | species=2 | nodes=9.1
+  Gen 2970 | wall= 497.2s | best=-0.61351 | mean=-0.86450 | gen=145.3ms | species=2 | nodes=9.0
+  Gen 2980 | wall= 498.8s | best=-0.61351 | mean=-0.81823 | gen=148.2ms | species=2 | nodes=8.9
+  Gen 2990 | wall= 500.3s | best=-0.61351 | mean=-0.85460 | gen=147.7ms | species=2 | nodes=8.9
+  Gen 3000 | wall= 501.8s | best=-0.61351 | mean=-0.83936 | gen=147.1ms | species=2 | nodes=8.9
+  Gen 3010 | wall= 503.4s | best=-0.61351 | mean=-0.84442 | gen=149.5ms | species=2 | nodes=8.9
+  Gen 3020 | wall= 504.9s | best=-0.61351 | mean=-0.87923 | gen=149.4ms | species=2 | nodes=8.9
+  Gen 3030 | wall= 506.4s | best=-0.61351 | mean=-0.85161 | gen=143.9ms | species=2 | nodes=8.9
+  Gen 3040 | wall= 508.0s | best=-0.61351 | mean=-0.84228 | gen=144.7ms | species=2 | nodes=8.9
+  Gen 3050 | wall= 509.5s | best=-0.61351 | mean=-0.86458 | gen=145.9ms | species=2 | nodes=8.8
+  Gen 3060 | wall= 511.0s | best=-0.61351 | mean=-0.85319 | gen=148.7ms | species=2 | nodes=8.9
+  Gen 3070 | wall= 512.5s | best=-0.61351 | mean=-0.85505 | gen=146.5ms | species=2 | nodes=8.9
+  Gen 3080 | wall= 514.0s | best=-0.61351 | mean=-0.84080 | gen=148.1ms | species=2 | nodes=8.9
+  Gen 3090 | wall= 515.5s | best=-0.61351 | mean=-0.84804 | gen=146.7ms | species=2 | nodes=8.8
+  Gen 3100 | wall= 517.1s | best=-0.61351 | mean=-0.88407 | gen=145.1ms | species=2 | nodes=9.2
+  Gen 3110 | wall= 518.6s | best=-0.61351 | mean=-0.85054 | gen=144.7ms | species=2 | nodes=8.9
+  Gen 3120 | wall= 520.1s | best=-0.61351 | mean=-0.84569 | gen=150.6ms | species=2 | nodes=9.1
+  Gen 3130 | wall= 521.6s | best=-0.61351 | mean=-0.85957 | gen=145.5ms | species=2 | nodes=9.0
+  Gen 3140 | wall= 523.2s | best=-0.61351 | mean=-0.85582 | gen=145.1ms | species=2 | nodes=9.0
+  Gen 3150 | wall= 524.7s | best=-0.61351 | mean=-0.84753 | gen=143.3ms | species=2 | nodes=8.9
+  Gen 3160 | wall= 526.2s | best=-0.61351 | mean=-0.84867 | gen=147.5ms | species=2 | nodes=8.9
+  Gen 3170 | wall= 528.3s | best=-0.61351 | mean=-0.85450 | gen=145.8ms | species=2 | nodes=8.8
+  Gen 3180 | wall= 529.9s | best=-0.61351 | mean=-0.85876 | gen=145.0ms | species=2 | nodes=8.9
+  Gen 3190 | wall= 531.4s | best=-0.61351 | mean=-0.85854 | gen=143.7ms | species=2 | nodes=8.8
+  Gen 3200 | wall= 532.9s | best=-0.61351 | mean=-0.84860 | gen=143.5ms | species=2 | nodes=8.8
+  Gen 3210 | wall= 534.4s | best=-0.61351 | mean=-0.85918 | gen=153.4ms | species=2 | nodes=8.9
+  Gen 3220 | wall= 536.0s | best=-0.61351 | mean=-0.86527 | gen=149.8ms | species=2 | nodes=8.8
+  Gen 3230 | wall= 537.5s | best=-0.61351 | mean=-0.84248 | gen=145.0ms | species=2 | nodes=9.2
+  Gen 3240 | wall= 539.1s | best=-0.61351 | mean=-0.85263 | gen=149.8ms | species=2 | nodes=8.8
+  Gen 3250 | wall= 540.6s | best=-0.61351 | mean=-0.83415 | gen=145.8ms | species=2 | nodes=8.7
+  Gen 3260 | wall= 542.2s | best=-0.61351 | mean=-0.81513 | gen=147.1ms | species=2 | nodes=8.7
+  Gen 3270 | wall= 543.8s | best=-0.61351 | mean=-0.83779 | gen=146.4ms | species=2 | nodes=8.7
+  Gen 3280 | wall= 545.3s | best=-0.61351 | mean=-0.87910 | gen=144.5ms | species=2 | nodes=8.7
+  Gen 3290 | wall= 546.8s | best=-0.61351 | mean=-0.82707 | gen=146.6ms | species=2 | nodes=8.7
+  Gen 3300 | wall= 548.3s | best=-0.61351 | mean=-0.83091 | gen=145.2ms | species=2 | nodes=8.7
+  Gen 3310 | wall= 549.9s | best=-0.61351 | mean=-0.85045 | gen=145.8ms | species=2 | nodes=8.7
+  Gen 3320 | wall= 551.4s | best=-0.61351 | mean=-0.84291 | gen=146.6ms | species=2 | nodes=8.7
+  Gen 3330 | wall= 552.9s | best=-0.61351 | mean=-0.85447 | gen=143.5ms | species=2 | nodes=8.7
+  Gen 3340 | wall= 554.4s | best=-0.61351 | mean=-0.86176 | gen=148.0ms | species=2 | nodes=8.8
+  Gen 3350 | wall= 556.0s | best=-0.61351 | mean=-0.87335 | gen=144.7ms | species=2 | nodes=9.0
+  Gen 3360 | wall= 557.5s | best=-0.61351 | mean=-0.86278 | gen=145.4ms | species=2 | nodes=8.7
+  Gen 3370 | wall= 559.0s | best=-0.61351 | mean=-0.85391 | gen=145.7ms | species=2 | nodes=8.7
+  Gen 3380 | wall= 561.1s | best=-0.61351 | mean=-0.84911 | gen=145.0ms | species=2 | nodes=8.7
+  Gen 3390 | wall= 562.7s | best=-0.61351 | mean=-0.82514 | gen=146.3ms | species=2 | nodes=8.7
+  Gen 3400 | wall= 564.2s | best=-0.61351 | mean=-0.84991 | gen=147.9ms | species=2 | nodes=8.8
+  Gen 3410 | wall= 565.7s | best=-0.61351 | mean=-0.85500 | gen=145.3ms | species=2 | nodes=8.8
+  Gen 3420 | wall= 567.2s | best=-0.61351 | mean=-0.82568 | gen=148.3ms | species=2 | nodes=8.8
+  Gen 3430 | wall= 568.8s | best=-0.61351 | mean=-0.82691 | gen=146.5ms | species=2 | nodes=8.8
+  Gen 3440 | wall= 570.3s | best=-0.61351 | mean=-0.84493 | gen=148.3ms | species=2 | nodes=8.8
+  Gen 3450 | wall= 571.9s | best=-0.61351 | mean=-0.84004 | gen=146.5ms | species=2 | nodes=8.7
+  Gen 3460 | wall= 573.4s | best=-0.61351 | mean=-0.84010 | gen=149.1ms | species=2 | nodes=8.8
+  Gen 3470 | wall= 575.0s | best=-0.61351 | mean=-0.84748 | gen=151.8ms | species=2 | nodes=8.8
+  Gen 3480 | wall= 576.5s | best=-0.61351 | mean=-0.84353 | gen=145.5ms | species=2 | nodes=8.9
+  Gen 3490 | wall= 578.1s | best=-0.61351 | mean=-0.80607 | gen=145.3ms | species=2 | nodes=8.7
+  Gen 3500 | wall= 579.6s | best=-0.61351 | mean=-0.83167 | gen=148.9ms | species=2 | nodes=8.9
+  Gen 3510 | wall= 581.1s | best=-0.61351 | mean=-0.85168 | gen=146.2ms | species=2 | nodes=8.7
+  Gen 3520 | wall= 582.6s | best=-0.61351 | mean=-0.85734 | gen=146.9ms | species=2 | nodes=8.7
+  Gen 3530 | wall= 584.2s | best=-0.61351 | mean=-0.87184 | gen=145.5ms | species=2 | nodes=8.8
+  Gen 3540 | wall= 585.7s | best=-0.61351 | mean=-0.87647 | gen=147.1ms | species=2 | nodes=8.8
+  Gen 3550 | wall= 587.2s | best=-0.61351 | mean=-0.83581 | gen=145.8ms | species=2 | nodes=8.7
+  Gen 3560 | wall= 588.7s | best=-0.61351 | mean=-0.85075 | gen=145.9ms | species=2 | nodes=8.7
+  Gen 3570 | wall= 590.3s | best=-0.61351 | mean=-0.82571 | gen=146.1ms | species=2 | nodes=8.8
+  Gen 3580 | wall= 591.8s | best=-0.61351 | mean=-0.85136 | gen=148.5ms | species=2 | nodes=8.9
+  Gen 3590 | wall= 593.9s | best=-0.61351 | mean=-0.85806 | gen=145.7ms | species=2 | nodes=8.8
+  Gen 3600 | wall= 595.4s | best=-0.61351 | mean=-0.84155 | gen=143.7ms | species=2 | nodes=8.7
+  Gen 3610 | wall= 596.9s | best=-0.61351 | mean=-0.85511 | gen=145.7ms | species=2 | nodes=8.8
+  Gen 3620 | wall= 598.4s | best=-0.61351 | mean=-0.83815 | gen=148.9ms | species=2 | nodes=8.8
+  Gen 3630 | wall= 600.0s | best=-0.61351 | mean=-0.83702 | gen=145.5ms | species=2 | nodes=8.8
+
+  ⏱️  時間制限 600s に達しました (gen=3631)
+
+  完了: 3631 世代, 600.1s, best=-0.613508
+
+[Problem B] VectorNeighbor 32次元
+  corpus=(100, 32), queries=(20, 32)
+
+============================================================
+[SQRT_POP1000_VectorNeighbor] 開始 (最大 600s / 10分)
+  入力=32, 出力=32, pop=1000, species=32
+  ログ → /mnt/d/Projects/claude_work/neat_trident/logs/benchmark_sqrt_pop1000_vector.jsonl
+============================================================
+initializing
+initializing finished
+  コンパイル中...
+  コンパイル完了
+  Gen    0 | wall=   0.0s | best=-0.05093 | mean=-0.06273 | gen=266.8ms | species=1 | nodes=64.1
+  Gen   10 | wall=   0.9s | best=-0.03131 | mean=-0.03627 | gen=54.3ms | species=1 | nodes=64.9
+  Gen   20 | wall=   1.5s | best=-0.02072 | mean=-0.02416 | gen=46.3ms | species=1 | nodes=64.6
+  Gen   30 | wall=   2.1s | best=-0.01576 | mean=-0.01799 | gen=53.7ms | species=1 | nodes=64.7
+  Gen   40 | wall=   2.7s | best=-0.01142 | mean=-0.01489 | gen=49.5ms | species=1 | nodes=64.4
+  Gen   50 | wall=   3.3s | best=-0.01089 | mean=-0.01281 | gen=51.4ms | species=1 | nodes=64.5
+
+  ✅ fitness_target=-0.01 到達 (gen=56)
+
+  完了: 56 世代, 3.7s, best=-0.009892
+============================================================
+TRIDENT NEAT ベンチマーク サマリーレポート
+============================================================
+
+実行日時 : 2026-04-27 01:45:23
+backend  : gpu
+devices  : ['cuda:0']
+
+■ SQRT_POP1000 実行結果
+----------------------------------------
+  [SQRT_POP1000_Spiral]
+    総世代数          : 3631
+    総実行時間        : 600.13s (10.0分)
+    平均世代時間      : 158.70 ms/gen
+    最良 fitness      : -0.613508
+    fitness target    : -0.3
+    収束              : 未達
+
+  [SQRT_POP1000_VectorNeighbor]
+    総世代数          : 56
+    総実行時間        : 3.68s (0.1分)
+    平均世代時間      : 55.58 ms/gen
+    最良 fitness      : -0.009892
+    fitness target    : -0.01
+    収束              : ✅
+
+■ GPU 実行結果
+----------------------------------------
+  GPU 実行: ✅ (上記 CPU と同一パラメータで実行済み — GPU ログは benchmark_gpu_*.jsonl)
+
+■ 比較メモ (CPU vs GPU 理論値)
+----------------------------------------
+  [SQRT_POP1000_Spiral]
+    CPU 平均世代時間       : 158.70 ms/gen
+    GPU 期待値 (100x)     : 1.59 ms/gen
+    GPU 期待値 (最大500x) : 0.32 ms/gen
+    30分で期待できる世代数:
+      CPU 実績            : 3631 世代
+      GPU 期待 (100x)     : 363100 世代
+      GPU 期待 (最大500x) : 1815500 世代
+
+  [SQRT_POP1000_VectorNeighbor]
+    CPU 平均世代時間       : 55.58 ms/gen
+    GPU 期待値 (100x)     : 0.56 ms/gen
+    GPU 期待値 (最大500x) : 0.11 ms/gen
+    30分で期待できる世代数:
+      CPU 実績            : 56 世代
+      GPU 期待 (100x)     : 5600 世代
+      GPU 期待 (最大500x) : 28000 世代
+
+■ ログファイル
+----------------------------------------
+  benchmark_sqrt_pop1000_spiral.jsonl
+  benchmark_sqrt_pop1000_vectorneighbor.jsonl
+
+  サマリー: /mnt/d/Projects/claude_work/neat_trident/logs/benchmark_summary.txt
+
+レポート出力: /mnt/d/Projects/claude_work/neat_trident/logs/benchmark_summary.txt

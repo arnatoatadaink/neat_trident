@@ -1,57 +1,39 @@
-# TRIDENT — Claude Code 作業ガイド
+# TRIDENT — NEAT-based Skill Discovery for MED Framework
 
-## プロジェクト概要
+TRIDENT uses NEAT / ES-HyperNEAT to autonomously explore and collect skills within MED.
+For project details, phase status, and Japanese reference: see `CLAUDE_USER.md` and `forUser/`.
 
-TRIDENT は MED Framework 内で NEAT を主体とした自律的スキル探索・収集を担うサブシステムです。
-詳細設計: `plan_trident.md`
+## Tech Stack
+- Python 3.13 + Poetry (venv: `.venv`)
+- JAX 0.9.2 + TensorNEAT 0.1.0 (GPU: CUDA 12, RTX 4060 8GB)
+- FAISS-cpu 1.13.2 + QDax 0.5.0 (MAP-Elites)
+- pytest 9.x
 
-## 現在のフェーズ
+## Commands
+| Command | Purpose |
+|---------|---------|
+| `poetry run pytest tests/ -q` | Run all tests (136 tests) |
+| `poetry run python scripts/neat_benchmark.py` | NEAT benchmark (30 min) |
+| `poetry run python scripts/med_integration_verify.py` | MED integration check |
+| `poetry run python scripts/phase0_verify.py` | Environment check |
 
-**Phase 0 完了 → Phase 1 (A型 NeatIndexer) 開始可能**
+## Key Paths
+| Path | Role |
+|------|------|
+| `src/interfaces/` | A/B/C-type NEAT interfaces (NeatIndexer, NeatGate, NeatSlotFiller) |
+| `src/med_integration/` | MED adapter + ContextSensitiveSearch (AssociationFn) |
+| `src/es_hyperneat.py` | ES-HyperNEAT custom extension |
+| `src/map_elites_archive.py` | TRIDENTArchive (MAP-Elites via QDax) |
+| `src/novelty_search.py` | NoveltyArchive (custom JAX implementation) |
+| `tests/` | pytest suite |
+| `logs/` | Benchmark JSONL logs |
+| `.claude/rules/` | Claude rules (English, path-conditional) |
+| `forUser/` | Japanese translations of .claude/ files |
 
-Phase 0 調査結果: `phase0_results.md`
-
-## 技術スタック
-
-| コンポーネント | ライブラリ | 状態 |
-|-------------|----------|------|
-| NEAT / HyperNEAT | TensorNEAT 0.1.0 | ✅ |
-| MAP-Elites | QDax (JAX) | ✅ |
-| Novelty Search | カスタム実装 (JAX) | 未実装 |
-| ES-HyperNEAT | TensorNEAT HyperNEAT を拡張 | 未実装 |
-| JAX | 0.9.2 | ✅ (CPU) |
-| FAISS (MED既存) | faiss | 未インストール |
-
-## ディレクトリ構成
-
-```
-neat_trident/
-├── CLAUDE.md              # このファイル
-├── plan_trident.md        # 設計プラン
-├── phase0_results.md      # Phase 0 調査結果
-├── scripts/
-│   └── phase0_verify.py   # 環境確認スクリプト
-└── src/                   # 実装 (Phase 1 以降)
-    ├── interfaces/        # A/B/C 型 I/F
-    │   ├── neat_indexer.py    # A型: float vector
-    │   ├── neat_gate.py       # B型: binary activation
-    │   └── neat_slot_filler.py # C型: named slots
-    └── novelty_search.py  # NS カスタム実装
-```
-
-## 作業開始手順
-
-```bash
-# 環境確認
-python scripts/phase0_verify.py
-
-# Phase 1 開始
-# → src/interfaces/neat_indexer.py を実装
-```
-
-## 注意事項
-
-- GPU 未認識（CPU のみ）— WSL2 + CUDA 設定は別途対応
-- ES-HyperNEAT: TensorNEAT 0.1.0 未対応 → `HyperNEAT` クラスをベースにカスタム実装
-- NS: evosax に実装なし → JAX + QDax アーカイブと統合したカスタム実装
-- FAISS は MED 統合時に必要 (Phase 1 で `pip install faiss-cpu`)
+## Behavioral Principles
+- Always run `poetry run pytest tests/ -q` before marking any task complete
+- Read existing code before modifying
+- Do not mark tasks complete until tests pass and behavior is verified
+- When context is running low, say so explicitly
+- All `.claude/` files and `CLAUDE.md` are in English; `forUser/` has Japanese translations
+- When creating or updating any rule or skill, always update the forUser counterpart
