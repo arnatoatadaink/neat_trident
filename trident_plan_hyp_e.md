@@ -158,17 +158,124 @@ test_context_search.py  # 動作確認スクリプト
 
 ---
 
-## 評価指標
+## 推論グラフ化設計（RLTF + NEAT統合）
+
+### 背景
+
+S7（RLTF）とS6（Observer/Solver）の知見から、
+「どうして？どうするの推論構造をFAISS上でNEATを使ってグラフ化する」設計を追加。
+
+### 推論ステップのノード定義
+
+```python
+@dataclass
+class ReasoningNode:
+    node_id: str
+    node_type: str   # "observe" | "why" | "evidence" | "infer" | "conclude"
+    content: str     # ステップの内容
+    embedding: np.ndarray  # FAISSに登録するベクトル
+    reward: float    # このステップへのRLTF報酬
+    
+# ノード間のエッジ（推論の繋がり）
+@dataclass  
+class ReasoningEdge:
+    from_id: str
+    to_id: str
+    weight: float    # association_fn が出力するスコア
+    critique: str    # Teacherのテキスト批評（RLTFの報酬信号）
+```
+
+### 推論グラフのパイプライン
+
+```
+Student の推論ログ:
+  A: 何を検索したか（observe）
+  B: なぜそれを検索したか（why）← 新規追加
+  C: 何が見つかったか（evidence）← FAISSのヒット
+  D: どう判断したか（infer）
+  E: 結論（conclude）
+
+↓ グラフ化
+
+KGに登録:
+  ノード = 各推論ステップ
+  エッジ = association_fn(node_i, node_j, context) のスコア
+  
+Teacher のRLTF批評:
+  「B→Dの推論が根拠なく飛躍している」
+  → エッジB→Dの重みを下げる負の報酬信号
+  → NEATのフィットネス関数に組み込む
+```
+
+### NEATへのフィットネス関数設計
+
+```python
+def neat_fitness(genome, reasoning_logs, teacher_critiques):
+    """
+    RLVRのフィットネス関数 = 推論グラフの品質スコア
+    
+    components:
+      1. observer_score: FAISSが正しい根拠を取得できたか（IDEA-002と連動）
+      2. reasoning_coherence: 推論ステップの接続が論理的か
+      3. teacher_alignment: Teacherの批評と推論の乖離が小さいか（RLTF）
+    """
+    observer_score      = eval_faiss_retrieval(reasoning_logs)
+    coherence_score     = eval_graph_coherence(reasoning_logs)
+    teacher_score       = eval_teacher_alignment(reasoning_logs, teacher_critiques)
+    
+    return (0.4 * observer_score 
+          + 0.3 * coherence_score 
+          + 0.3 * teacher_score)
+```
+
+### NEAT開始タイミング（RLVR知見による前倒し）
+
+```
+旧計画:
+  Phase 4（IDEA-002/004/005完成後）にNEAT開始
+
+新計画（RLVR知見により前倒し）:
+  Phase 2でRLVRフィットネス関数（neat_fitness）が安定したら即開始
+  
+  理由:
+    RLVRが「知識不要の推論能力訓練」であれば
+    NEATは「推論グラフのトポロジー探索」として同時に動かせる
+    フィットネス関数が固まれば進化を始めてよい
+    → FAISSのk値実験（IDEA-002）と並行実行が可能
+
+  最初の世代:
+    ゲノム = AssociationFnの重みベクトル [w0, w1, w2, w3]
+    突然変異 = 重みの微小変化
+    交叉 = 2つの重みセットの混合
+    → TensorNEATで数百個体を並列評価（GPU）
+```
+
+---
+
+## Phase 5: 推論グラフ実装（追加フェーズ）
+
+- [ ] `ReasoningNode` / `ReasoningEdge` dataclassの実装
+- [ ] 推論ログをSQLの `thought_logs` に構造化して保存（IDEA-001拡張）
+- [ ] `neat_fitness()` 関数の実装（observer / coherence / teacher の3成分）
+- [ ] TensorNEATとの接続（ゲノム = AssociationFnの重みベクトル）
+- [ ] Teacherのテキスト批評をエッジ重みにマッピングする変換関数
+
+---
+
+## 評価指標（更新）
 
 ```
 定量:
   文脈ありなしでの検索結果の差（順位変動率）
   同一クエリ・異なるcontextでの結果多様性
   Chance-Level Threshold（IDEA-009）との連携精度
+  Observer精度とSolver精度の独立スコア（IDEA-004拡張A）
+  NEAT世代ごとのフィットネス推移
 
 定性:
   「犬」+ context="科学"  → 哺乳類・条件反射 が上位に来るか
   「犬」+ context="創作"  → 忠誠・孤独・友情 が上位に来るか
+  推論グラフで「飛躍のあるステップ」が可視化できるか
   
 日本語固有:
   敬語context と 素体context で異なる検索結果が得られるか
@@ -192,3 +299,4 @@ test_context_search.py  # 動作確認スクリプト
 | 2026-03-26 | plan_neat_hyp_e.md からTRIDENT側に移動・更新 |
 | 2026-03-26 | Hyperbolic版（geoopt）とTRIDENTインターフェース設計を追加 |
 | 2026-03-26 | context_emb候補表、Phase 3/4タスクを追加 |
+| 2026-04-26 | 推論グラフ化設計を追加（RLTF+NEAT統合）、NEATフィットネス関数設計、Phase 5追加、NEAT開始タイミングをPhase 2並行に前倒し |
