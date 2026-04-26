@@ -1,0 +1,20 @@
+[project]
+name = "neat-trident"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "arnatoatadaink",email = "yuihout2@gmail.com"}
+]
+requires-python = "^3.13"
+dependencies = [
+    "pytest (>=9.0.2,<10.0.0)",
+    "numpy (>=2.4.4,<3.0.0)",
+    "jax[cpu] (>=0.9.2,<0.10.0)",
+    "faiss-cpu (>=1.13.2,<2.0.0) ; python_version >= \"3.13\" and python_version < \"3.15\"",
+    "qdax (>=0.5.0,<0.6.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

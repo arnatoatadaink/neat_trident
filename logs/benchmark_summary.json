@@ -1,0 +1,34 @@
+{
+  "device_info": {
+    "devices": [
+      "cuda:0"
+    ],
+    "has_gpu": true,
+    "backend": "gpu"
+  },
+  "summaries": [
+    {
+      "label": "SQRT_POP1000_Spiral",
+      "total_generations": 3631,
+      "total_time_s": 600.13,
+      "avg_gen_time_ms": 158.7,
+      "best_fitness": -0.613508,
+      "fitness_target": -0.3,
+      "converged": false,
+      "pop_size": 1000,
+      "species_size": 32
+    },
+    {
+      "label": "SQRT_POP1000_VectorNeighbor",
+      "total_generations": 56,
+      "total_time_s": 3.68,
+      "avg_gen_time_ms": 55.58,
+      "best_fitness": -0.009892,
+      "fitness_target": -0.01,
+      "converged": true,
+      "pop_size": 1000,
+      "species_size": 32
+    }
+  ],
+  "gpu_note": "GPU 実行: ✅ (上記 CPU と同一パラメータで実行済み — GPU ログは benchmark_gpu_*.jsonl)"
+}

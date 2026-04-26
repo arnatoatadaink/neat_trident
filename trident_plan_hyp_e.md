@@ -103,36 +103,39 @@ test_context_search.py  # 動作確認スクリプト
 
 ## 実装タスク（Claude CLI向け）
 
-### Phase 1: コア実装（MED側）
+### Phase 1: コア実装（MED側） ✅ 完了 (2026-04-26)
 
-- [ ] `AssociationFn` — numpy版（torch不要）を先に実装
+- [x] `AssociationFn` — numpy版（torch不要）を先に実装
   - `fit(feedback_pairs)` で重みを更新できる設計
   - 重みをJSONで保存・ロードできる
   - TRIDENT進化用のアーキテクチャメタデータを保持
-- [ ] `ContextSensitiveSearch`
+- [x] `ContextSensitiveSearch`
   - `build_index(embeddings, texts)`
   - `search(query_emb, context_emb, k, alpha=0.5)`
   - faiss未インストール時はnumpyブルートフォースにフォールバック
-- [ ] `SearchResult` dataclass
+- [x] `SearchResult` dataclass
 
-### Phase 2: テスト
+実装: `src/med_integration/context_search.py`
 
-- [ ] `test_context_search.py`
+### Phase 2: テスト ✅ 完了 (2026-04-26)
+
+- [x] `test_context_search.py` — 28テスト全通過
   - ダミーembedding（np.random）で動作確認
-  - `context_emb=None`（文脈なし）と `context_emb=ctx`（文脈あり）で
-    結果の差を比較出力
-  - スコアの内訳（base / assoc / final）をログ出力
+  - `context_emb=None`（文脈なし）と `context_emb=ctx`（文脈あり）で結果の差を比較
+  - スコアの内訳（base / assoc / final）、alpha=0/1 境界テスト含む
 
-### Phase 3: Hyperbolic統合（オプション）
+実装: `tests/test_context_search.py`
+
+### Phase 3: Hyperbolic統合（オプション） ⏸ 保留
 
 - [ ] geoopt インストール確認: `pip install geoopt`
 - [ ] `HyperbolicAssociationFn` — ポアンカレ球ベースの3項関数
   - float64で動作することを確認
   - MLP版との精度比較
 
-### Phase 4: TRIDENTインターフェース準備
+### Phase 4: TRIDENTインターフェース準備 ✅ 完了 (2026-04-26)
 
-- [ ] アーキテクチャをJSONでシリアライズする設計
+- [x] アーキテクチャをJSONでシリアライズする設計
   ```json
   {
     "arch_type": "mlp",
@@ -141,7 +144,9 @@ test_context_search.py  # 動作確認スクリプト
     "generation": 0
   }
   ```
-- [ ] TRIDENTがアーキテクチャを差し替えられるプラグイン構造
+- [x] TRIDENTがアーキテクチャを差し替えられるプラグイン構造
+  - `AssociationFnProtocol` (Protocol定義)
+  - `ContextSensitiveSearch.swap_association_fn(fn)` メソッド
 
 ---
 
@@ -300,3 +305,4 @@ def neat_fitness(genome, reasoning_logs, teacher_critiques):
 | 2026-03-26 | Hyperbolic版（geoopt）とTRIDENTインターフェース設計を追加 |
 | 2026-03-26 | context_emb候補表、Phase 3/4タスクを追加 |
 | 2026-04-26 | 推論グラフ化設計を追加（RLTF+NEAT統合）、NEATフィットネス関数設計、Phase 5追加、NEAT開始タイミングをPhase 2並行に前倒し |
+| 2026-04-26 | Phase 1/2/4 実装完了 (context_search.py + test_context_search.py 28テスト通過) |
