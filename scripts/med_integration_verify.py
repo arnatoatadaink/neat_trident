@@ -245,6 +245,79 @@ except Exception as e:
     results["archive_export"] = False
 
 # ──────────────────────────────────────────────
+# 7. DomainIndexAdapter — 実DomainIndex 統合確認
+# ──────────────────────────────────────────────
+
+print("\n7. DomainIndexAdapter (実 MED DomainIndex) 確認")
+print("-" * 40)
+
+import os
+med_root = os.environ.get("MED_ROOT", "")
+
+if not med_root or not os.path.isdir(med_root):
+    print("  ⏭  MED_ROOT が未設定または存在しないためスキップ")
+    print("     実行例: MED_ROOT=/path/to/MED poetry run python scripts/med_integration_verify.py")
+    results["domain_index"] = None   # None = skipped
+else:
+    try:
+        import sys as _sys
+        # MED と TRIDENT が同じ "src" パッケージ名を使うため sys.modules を一時退避して衝突を回避する
+        _saved_src_mods = {k: _sys.modules.pop(k) for k in list(_sys.modules.keys())
+                           if k == "src" or k.startswith("src.")}
+        _sys.path.insert(0, med_root)
+        try:
+            from src.memory.faiss_index import DomainIndex
+            from src.common.config import FAISSIndexConfig
+        finally:
+            # MED の src.* を sys.modules から除去し TRIDENT の src.* を復元する
+            for k in list(_sys.modules.keys()):
+                if k == "src" or k.startswith("src."):
+                    del _sys.modules[k]
+            _sys.modules.update(_saved_src_mods)
+        from src.med_integration.domain_index_adapter import DomainIndexAdapter, _check_protocol
+
+        cfg = FAISSIndexConfig(dim=DIM, initial_type="Flat", metric="inner_product")
+        di  = DomainIndex(cfg)
+        adapter = DomainIndexAdapter(di, dimension=DIM)
+
+        assert _check_protocol(adapter), "Protocol 非準拠"
+        assert isinstance(adapter, MEDIndexerProtocol), "isinstance チェック失敗"
+        print(f"  Protocol 互換     : ✅")
+
+        doc_ids_r = [f"real_{i:03d}" for i in range(N)]
+        corpus_r  = rng.standard_normal((N, DIM)).astype(np.float32)
+        adapter.add(doc_ids_r, corpus_r)
+        assert adapter.ntotal == N, f"ntotal={adapter.ntotal}, expected {N}"
+        assert adapter.dimension == DIM
+        print(f"  add + ntotal      : ✅  ntotal={adapter.ntotal}, dim={adapter.dimension}")
+
+        q_r   = rng.standard_normal(DIM).astype(np.float32)
+        res_r = adapter.search(q_r, k=5)
+        assert len(res_r) == 5
+        assert isinstance(res_r[0][0], str)
+        assert res_r[0][1] >= res_r[-1][1], "スコアが降順でない"
+        print(f"  search(q, k=5)    : ✅  top={res_r[0]}")
+
+        # TRIDENTMEDAdapter に実アダプタを渡してエンドツーエンド確認
+        med_store_r = StubMEDSkillStore()
+        full_r = TRIDENTMEDAdapter(
+            hybrid_indexer=hi,
+            med_indexer=adapter,
+            med_skill_store=med_store_r,
+            dimension=DIM,
+        )
+        full_r.sync_indexer(doc_ids=doc_ids_r, corpus=corpus_r)
+        med_res_r = full_r.search_med(q_r, k=5)
+        assert isinstance(med_res_r[0][0], str)
+        print(f"  TRIDENTMEDAdapter : ✅  med_ntotal={adapter.ntotal}")
+        print(f"  summary: {full_r.summary()}")
+        results["domain_index"] = True
+    except Exception as e:
+        print(f"  ❌ エラー: {e}")
+        import traceback; traceback.print_exc()
+        results["domain_index"] = False
+
+# ──────────────────────────────────────────────
 # 結果サマリー
 # ──────────────────────────────────────────────
 
@@ -259,14 +332,20 @@ checks = [
     ("adapter",        "HybridIndexerMEDAdapter (MED準拠I/F)"),
     ("full_adapter",   "TRIDENTMEDAdapter 統合フロー"),
     ("archive_export", "TRIDENTArchive 一括エクスポート"),
+    ("domain_index",   "DomainIndexAdapter (実MED DomainIndex)"),
 ]
 
-passed = sum(1 for k, _ in checks if results.get(k))
-total = len(checks)
+passed  = sum(1 for k, _ in checks if results.get(k) is True)
+skipped = sum(1 for k, _ in checks if results.get(k) is None)
+total   = len(checks) - skipped
 
 for key, label in checks:
-    mark = "✅" if results.get(key) else "❌"
+    v    = results.get(key)
+    mark = "✅" if v is True else ("⏭ " if v is None else "❌")
     print(f"  {mark} {label}")
 
-print(f"\n  {passed}/{total} チェック通過")
+print(f"\n  {passed}/{total} チェック通過", end="")
+if skipped:
+    print(f"  ({skipped} スキップ)", end="")
+print()
 sys.exit(0 if passed == total else 1)

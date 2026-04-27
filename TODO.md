@@ -41,34 +41,72 @@ poetry run python scripts/neat_benchmark.py --max-seconds 600 --pop-size <N> --s
 
 ## 実装
 
-### [ ] 仮説E Phase 3 — HyperbolicAssociationFn (オプション)
+### [x] Optuna NEAT ハイパーパラメーター最適化 ✅ 2026-04-27
 
-geoopt を使ったポアンカレ球ベースの 3 項スコア関数。  
-詳細: `trident_plan_hyp_e.md` Phase 3
+`scripts/neat_optuna_tune.py` — TPESampler + SQLite (logs/optuna_neat.db)
 
+探索空間:
+- `pop_size` int log[50,1000], `species_size` int[5,100], `generation_limit` int[10,80]
+- `max_nodes` categorical[64,128,256], `max_conns` categorical[128,512,1024]
+
+実行:
 ```bash
-poetry run pip install geoopt
+poetry run python scripts/neat_optuna_tune.py --n-trials 30 --dim 16 --corpus-size 100
 ```
 
-### [ ] 384 次元統合テスト
+可視化: `optuna-dashboard logs/optuna_neat.db`
 
-all-MiniLM-L6-v2 の実際の embedding で ContextSensitiveSearch を評価。  
-文脈あり/なしの検索結果差を定量測定。
+---
 
-### [ ] NEAT → AssociationFn 進化ループ
+### [x] 仮説E Phase 3 — HyperbolicAssociationFn (オプション) ✅ 2026-04-27
 
-TRIDENT が NEAT で association_fn のアーキテクチャを進化させる実装。  
-`AssociationFnProtocol` と `swap_association_fn()` は実装済み。
+geoopt 0.5.1 / torch 2.11.0 でポアンカレ球ベースの 3 項スコア関数を実装。  
+`src/med_integration/hyperbolic_association.py` + 16 テスト通過。
 
-### [ ] MED 実統合
+### [x] 384 次元統合テスト ✅ 2026-04-27
 
-StubMEDIndexer / StubMEDSkillStore を実際の MED DomainIndex に差し替え。  
-前提: MED 側の統合テスト完了後。
+all-MiniLM-L6-v2 (384次元) で ContextSensitiveSearch を定量評価。
+
+**知見:**
+- alpha=0.5 では FAISS ベーススコアが支配的で文脈効果は限定的
+- Hyperbolic 版は英語の曖昧クエリ ("python") で top-5 変化を示した
+- MLP デフォルト等重みは文脈感度なし → **NEAT進化で重み最適化の動機を定量的に確認**
+- 日本語コーパスは all-MiniLM-L6-v2 (英語特化) との相性不足
+
+実装: `scripts/eval_384dim.py`, `tests/test_384dim_interface.py` (11テスト)
+
+### [x] NEAT → AssociationFn 進化ループ ✅ 2026-04-27
+
+TRIDENT が NEAT で association_fn アーキテクチャを進化させる実装。
+
+- `AssociationFnProblem` — fitness=-MSE(score, label), input=[cos(q,c), cos(q,ctx), cos(c,ctx), cos(q-ctx,c)]
+- `NEATAssociationFn` — AssociationFnProtocol 準拠、pickle 永続化、swap_association_fn 対応
+- `AssociationFnEvolver` — feedback_pairs → NEAT 進化ループ
+
+実装: `src/med_integration/neat_assoc_evolver.py`, 19テスト全通過
+
+### [x] MED 実統合 ✅ 2026-04-27
+
+DomainIndexAdapter で MED の DomainIndex を MEDIndexerProtocol に適合させた。
+
+**実装内容:**
+- `pydantic` / `pydantic-settings` を TRIDENT venv に追加 (MED 依存解消)
+- `DomainIndexAdapter`: `DomainIndex.count → ntotal`、`dimension` コンストラクタ注入
+- `sys.modules` 退避で `src` パッケージ名衝突を回避して MED インポート成功
+- `med_integration_verify.py` チェック7追加: MED_ROOT 環境変数で実 DomainIndex テスト
+- `tests/test_domain_index_adapter.py` 11テスト通過
+
+**注意: SkillStore には MED 側の対応コンポーネントがなく StubMEDSkillStore を継続使用。**
 
 ---
 
 ## 完了済み
 
+- [x] Optuna NEAT ハイパーパラメーター最適化 (neat_optuna_tune.py, SQLite永続化)
+- [x] MED 実統合 (DomainIndexAdapter + 11テスト, med_integration_verify 7/7通過)
+- [x] NEAT → AssociationFn 進化ループ (neat_assoc_evolver.py + 19テスト)
+- [x] 384次元統合テスト (eval_384dim.py + 11テスト)
+- [x] 仮説E Phase 3 — HyperbolicAssociationFn (geoopt 0.5.1)
 - [x] A/B/C 型 NEAT インターフェース実装 + pytest 136 テスト通過
 - [x] ES-HyperNEAT カスタム拡張
 - [x] MAP-Elites + Novelty Search 統合
