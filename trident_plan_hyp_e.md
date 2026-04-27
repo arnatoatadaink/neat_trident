@@ -126,12 +126,15 @@ test_context_search.py  # 動作確認スクリプト
 
 実装: `tests/test_context_search.py`
 
-### Phase 3: Hyperbolic統合（オプション） ⏸ 保留
+### Phase 3: Hyperbolic統合（オプション） ✅ 完了 (2026-04-27)
 
-- [ ] geoopt インストール確認: `pip install geoopt`
-- [ ] `HyperbolicAssociationFn` — ポアンカレ球ベースの3項関数
+- [x] geoopt インストール確認: `pip install geoopt` (0.5.1 + torch 2.11.0)
+- [x] `HyperbolicAssociationFn` — ポアンカレ球ベースの3項関数
   - float64で動作することを確認
   - MLP版との精度比較
+
+実装: `src/med_integration/hyperbolic_association.py`  
+テスト: `tests/test_hyperbolic_association.py` — 16テスト全通過
 
 ### Phase 4: TRIDENTインターフェース準備 ✅ 完了 (2026-04-26)
 
@@ -306,3 +309,4 @@ def neat_fitness(genome, reasoning_logs, teacher_critiques):
 | 2026-03-26 | context_emb候補表、Phase 3/4タスクを追加 |
 | 2026-04-26 | 推論グラフ化設計を追加（RLTF+NEAT統合）、NEATフィットネス関数設計、Phase 5追加、NEAT開始タイミングをPhase 2並行に前倒し |
 | 2026-04-26 | Phase 1/2/4 実装完了 (context_search.py + test_context_search.py 28テスト通過) |
+| 2026-04-27 | Phase 3 実装完了 (hyperbolic_association.py + test_hyperbolic_association.py 16テスト通過) |
