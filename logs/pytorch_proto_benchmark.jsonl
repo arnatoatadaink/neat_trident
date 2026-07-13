@@ -2,3 +2,5 @@
 {"label": "VectorNeighbor", "device": "cpu", "pop_size": 100, "num_samples": 20, "max_nodes": 80, "max_conns": 1034, "mean_forward_ms": 73.983, "std_forward_ms": 5.548, "mean_nodes": 65.6, "mean_conns": 1029.7, "repeats": 10}
 {"label": "Spiral", "device": "cpu", "pop_size": 100, "num_samples": 200, "max_nodes": 80, "max_conns": 200, "mean_forward_ms": 1268.083, "std_forward_ms": 150.525, "mean_nodes": 4.6, "mean_conns": 5.3, "repeats": 10}
 {"label": "VectorNeighbor", "device": "cpu", "pop_size": 100, "num_samples": 20, "max_nodes": 80, "max_conns": 1044, "mean_forward_ms": 67.65, "std_forward_ms": 3.098, "mean_nodes": 65.5, "mean_conns": 1029.5, "repeats": 10}
+{"label": "Spiral", "device": "cuda", "pop_size": 100, "num_samples": 200, "max_nodes": 80, "max_conns": 200, "mean_forward_ms": 31.303, "std_forward_ms": 0.567, "mean_nodes": 4.6, "mean_conns": 5.3, "repeats": 20}
+{"label": "VectorNeighbor", "device": "cuda", "pop_size": 100, "num_samples": 20, "max_nodes": 80, "max_conns": 1044, "mean_forward_ms": 21.069, "std_forward_ms": 1.237, "mean_nodes": 65.5, "mean_conns": 1029.5, "repeats": 20}

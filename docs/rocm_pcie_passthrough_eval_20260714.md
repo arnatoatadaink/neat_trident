@@ -117,3 +117,24 @@ print(torch.cuda.get_device_name(1))  # -> AMD Radeon RX 9060 XT
 
 **sudo不要・ライブラリの除去/置換不要**。次の一手 (`pytorch-rocm-bench-verify`) では
 ベンチマーク実行時に `ROCPROFILER_REGISTER_ENABLED=0` を環境変数として付与すればよい。
+
+## pytorch-rocm-bench-verify 実施結果 (2026-07-14)
+
+`ROCPROFILER_REGISTER_ENABLED=0 poetry run python scripts/pytorch_neat_prototype_benchmark.py`
+をRX 9070 XT (torch 2.13.0+rocm7.2) 上で実行。結果は
+`logs/pytorch_proto_benchmark.jsonl` に追記済み。CPU実行結果（同ログ内の直近値）との比較:
+
+| label | CPU mean_forward_ms | ROCm(cuda) mean_forward_ms | 速度向上 |
+|---|---|---|---|
+| Spiral (pop=100, samples=200) | 1268.083 | 31.303 | 約40.5倍 |
+| VectorNeighbor (pop=100, samples=20) | 67.65 | 21.069 | 約3.2倍 |
+
+`poetry run pytest tests/test_pytorch_proto.py -v` は3件とも pass（既存実装は非破壊）。
+
+**結論**: ROCm実機でのGPUオフロードは明確に有効（順伝播のみの計測、下界比較）。
+Spiralは低次元入力(2→1)にもかかわらず40倍超の高速化が出ており、GPUバッチ化の
+恩恵がノード/コネクション数の小さいネットワークでも十分に出ることを確認。
+VectorNeighborは相対的に伸びが小さい（3.2倍）— 高次元入出力(32→32)でのCPU側の
+ベクトル化効率が既に高いためと推測されるが、詳細分析は未実施。
+
+次のタスク `pytorch-full-port-decision`（PyTorch本格移植の可否判断）の判断材料として使う。
