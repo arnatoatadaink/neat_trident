@@ -41,6 +41,49 @@ poetry run python scripts/neat_benchmark.py --max-seconds 600 --pop-size <N> --s
 
 ## 実装
 
+### [ ] 仮説E Phase 5 — 推論グラフ化（RLTF + NEAT統合）
+
+設計: `trident_plan_hyp_e.md` 推論グラフ化設計セクション参照。  
+Student の推論ステップを FAISS 上のノード/エッジとしてグラフ化し、
+Teacher の RLTF 批評をエッジ重みの報酬信号として NEAT フィットネスに組み込む。
+
+**実装タスク (依存順)**
+
+#### 5-1. [ ] ReasoningNode / ReasoningEdge dataclass
+- `node_type`: `"observe" | "why" | "evidence" | "infer" | "conclude"`
+- `ReasoningEdge.critique`: Teacher のテキスト批評（RLTF 報酬信号）
+- ファイル: `src/med_integration/reasoning_graph.py`
+
+#### 5-2. [ ] 推論ログの構造化保存
+- SQL `thought_logs` テーブルに `ReasoningNode` を保存する実装（IDEA-001 拡張）
+- `ReasoningGraphStore` クラス: add_node / add_edge / get_graph
+
+#### 5-3. [ ] neat_fitness() 関数の実装
+```python
+# 3成分の加重和
+return (0.4 * observer_score      # FAISS が正しい根拠を取得できたか
+      + 0.3 * coherence_score     # 推論ステップの接続が論理的か
+      + 0.3 * teacher_score)      # Teacher 批評との乖離 (RLTF)
+```
+- `eval_faiss_retrieval()` / `eval_graph_coherence()` / `eval_teacher_alignment()` を実装
+- ファイル: `src/med_integration/reasoning_fitness.py`
+
+#### 5-4. [ ] Teacher 批評 → エッジ重みマッピング
+- テキスト批評を [-1, 1] の報酬スカラーに変換する関数
+- 例: 「B→Dの推論が根拠なく飛躍している」→ エッジ重みを下げる負の信号
+
+#### 5-5. [ ] TensorNEAT との接続
+- ゲノム = `AssociationFn` の重みベクトル `[w0, w1, w2, w3]`
+- `neat_fitness()` を `BaseProblem.evaluate()` に組み込む
+- Phase 2 と並行して実行可能（NEAT 開始タイミングを前倒し）
+
+**前提条件**
+- `AssociationFnEvolver` 実装済み ✅
+- `NEATAssociationFn` 実装済み ✅
+- MED 側の `thought_logs` スキーマ定義が必要
+
+---
+
 ### [x] Optuna NEAT ハイパーパラメーター最適化 ✅ 2026-04-27
 
 `scripts/neat_optuna_tune.py` — TPESampler + SQLite (logs/optuna_neat.db)
@@ -102,6 +145,8 @@ DomainIndexAdapter で MED の DomainIndex を MEDIndexerProtocol に適合さ�
 
 ## 完了済み
 
+- [x] pytest-testmon 調査 ✅ 2026-05-09 → **非互換のため見送り** (JAX @jax.jit のJITコンパイルがtestmon 2.xのメソッドチェックサムを毎回変化させる。testmon 1.xはPython≤3.11のみ対応)
+- [ ] テスト速度改善 — testmon代替措置の導入 → 案: `docs/test_speed_alternatives.md` 参照 (推奨: pytest-xdist 並列実行の試験導入)
 - [x] Optuna NEAT ハイパーパラメーター最適化 (neat_optuna_tune.py, SQLite永続化)
 - [x] MED 実統合 (DomainIndexAdapter + 11テスト, med_integration_verify 7/7通過)
 - [x] NEAT → AssociationFn 進化ループ (neat_assoc_evolver.py + 19テスト)
