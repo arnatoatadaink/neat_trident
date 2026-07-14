@@ -23,6 +23,14 @@ markers = [
     "integration: slow semantic tests using real ML models (run with -m integration)",
 ]
 
+[[tool.poetry.source]]
+name = "pytorch-rocm"
+url = "https://download.pytorch.org/whl/rocm7.2"
+priority = "explicit"
+
+[tool.poetry.dependencies]
+torch = {source = "pytorch-rocm"}
+
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
