@@ -11,3 +11,9 @@ CLAUDE.md
 CLAUDE_USER.md
 .claude/
 forUser/
+
+# intermediate investigation notes / handoffs — not meant for a public repo (agent_herness TASK-94)
+docs/local/
+
+# generated data artifacts
+logs/*.db
